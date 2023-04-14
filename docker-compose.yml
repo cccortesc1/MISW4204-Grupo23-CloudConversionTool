@@ -28,7 +28,7 @@ services:
     container_name: cloud_conversion_nginx
     image: nginx:alpine
     ports:
-      - "80:80"
+      - "8000:80"
     volumes:
       - ./default.conf:/etc/nginx/conf.d/
     depends_on:
