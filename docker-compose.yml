@@ -1,0 +1,38 @@
+version: '3'
+services:
+  app:
+    build: .
+    container_name: converter_api_app
+    networks:
+      - web_net 
+    ports:
+      - "5000:5000"
+    depends_on: 
+      - db
+  db: 
+    container_name: libro_db_pg
+    environment: 
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: cloud_conversion
+    image: "postgres:latest"
+    networks:
+      - web_net
+    ports: 
+      - "5432:5432"
+    volumes: 
+      - ${PWD}/postgres-data:/var/lib/postgresql/data
+  nginx:
+    image: nginx:latest
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf
+    depends_on:
+      - app
+networks:
+  web_net:
+      driver: bridge
+volumes: 
+  pg-data: 
+    driver: local
