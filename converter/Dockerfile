@@ -9,7 +9,8 @@ COPY . .
 
 # Install the dependencies
 RUN pip install --upgrade pip
-RUN pip install -e .
+RUN pip install -r requirements.txt
+RUN pip install gunicorn
 
 # Set environment variables
 ENV FLASK_APP="default"
@@ -21,5 +22,6 @@ EXPOSE 5000
 ENV FLASK_APP=app.py
 
 # Define the command to run the Flask development server
-CMD ["flask", "run", "--host=0.0.0.0"]
+#CMD ["flask", "run", "--host=0.0.0.0"]
 # CMD ["gunicorn", "app:app", "-c", "./gunicorn.conf.py"]
+CMD [ "gunicorn", "-w", "4", "--bind", "0.0.0.0:5000", "wsgi"]
