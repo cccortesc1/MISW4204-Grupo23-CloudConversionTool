@@ -1,7 +1,9 @@
 version: '3'
 services:
   app:
-    build: .
+    build:
+      context: converter
+      dockerfile: Dockerfile
     container_name: converter_api_app
     networks:
       - web_net 
@@ -10,7 +12,7 @@ services:
     depends_on: 
       - db
   db: 
-    container_name: libro_db_pg
+    container_name: cloud_conversion_db
     environment: 
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
@@ -23,7 +25,7 @@ services:
     volumes: 
       - ${PWD}/postgres-data:/var/lib/postgresql/data
   nginx:
-    image: nginx:latest
+    image: nginx:alpine
     ports:
       - "80:80"
     volumes:
