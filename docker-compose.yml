@@ -13,7 +13,7 @@ services:
     build:
       context: ./converter
       dockerfile: Dockerfile
-    command: gunicorn --bind 0.0.0.0:5000 --chdir /home/ubuntu/project/MISW4204-Grupo23-CloudConversionTool/converter app:app  
+    #command: gunicorn --bind 0.0.0.0:5000 --chdir '/home/ubuntu/project/MISW4204-Grupo23-CloudConversionTool/converter' app:app --reload --timeout 900
     container_name: converter_api_app
     networks:
       - web_net 
