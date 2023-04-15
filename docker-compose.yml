@@ -1,26 +1,34 @@
-version: '3.8'
+version: '3.7'
 services:
-  nginx:
-    container_name: cloud_conversion_nginx
-    image: nginx:alpine
-    ports:
-      - "8000:8000"
-    volumes:
-      - ./default.conf:/etc/nginx/conf.d/
-    depends_on:
-      - app
   app:
     build:
       context: ./converter
       dockerfile: Dockerfile
     #command: gunicorn --bind 0.0.0.0:5000 --chdir /home/ubuntu/project/MISW4204-Grupo23-CloudConversionTool/converter/app.py --reload --timeout 900
+    restart: always
     container_name: converter_api_app
     networks:
       - web_net 
     ports:
       - "5000:5000"
+    environment:
+      - DEBUG=0  
+    volumes:
+      - ./project:/home/ubuntu/project/data
     depends_on: 
       - db
+  nginx:
+    container_name: cloud_conversion_nginx
+    restart: always
+    image: nginx:alpine
+    ports:
+      - "80:80"
+    networks:
+      - web_net
+    volumes:
+      - ./default.conf:/etc/nginx/conf.d/
+    depends_on:
+      - app
   db: 
     container_name: cloud_conversion_db
     environment: 
