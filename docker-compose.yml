@@ -11,7 +11,7 @@ services:
       - app
   app:
     build:
-      context: ./
+      context: ./converter
       dockerfile: Dockerfile
     container_name: converter_api_app
     networks:
