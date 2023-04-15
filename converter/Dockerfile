@@ -2,7 +2,7 @@
 FROM python:3.8
 
 # Set the working directory in the container to /app
-WORKDIR /app
+WORKDIR /converter
 
 # Copy the rest of the application code to the container
 COPY . .
@@ -19,9 +19,9 @@ ENV FLASK_DEBUG=1
 # Expose port 5000 for the Flask development server to listen on
 EXPOSE 5000
 
-#ENV FLASK_APP=app.py
+ENV FLASK_APP=app.py
 
 # Define the command to run the Flask development server
 #CMD ["flask", "run", "--host=0.0.0.0"]
-#CMD ["gunicorn", "app:app", "-c", "./gunicorn.conf.py"]
-CMD [ "gunicorn", "-w", "4", "--bind", "0.0.0.0:5000", "app:app"]
+CMD ["gunicorn", "app:app", "-c", "app.py"]
+#CMD [ "gunicorn", "-w", "4", "--bind", "0.0.0.0:5000", "app:app"]
