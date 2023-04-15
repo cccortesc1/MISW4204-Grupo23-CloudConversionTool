@@ -21,7 +21,8 @@ EXPOSE 5000
 
 ENV FLASK_APP=app.py
 
+
 # Define the command to run the Flask development server
 #CMD ["flask", "run", "--host=0.0.0.0"]
-CMD ["gunicorn", "app:app", "-c", "app.py"]
-#CMD [ "gunicorn", "-w", "4", "--bind", "0.0.0.0:5000", "app:app"]
+#CMD ["gunicorn", "app:app", "-c", "app.py"]
+CMD [ "gunicorn", "-w", "4", "--bind", "0.0.0.0:5000", "--chdir /home/ubuntu/project/MISW4204-Grupo23-CloudConversionTool app:app"]
