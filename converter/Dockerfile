@@ -12,7 +12,7 @@ COPY requirements.txt /code/
 # Install the dependencies
 RUN pip install --upgrade pip
 RUN pip install -r requirements.txt
-#RUN pip install gunicorn
+RUN pip install gunicorn
  
 # Copy the rest of the application code to the container
 #COPY . /code/
