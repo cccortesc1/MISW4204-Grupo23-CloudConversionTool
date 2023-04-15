@@ -22,6 +22,6 @@ EXPOSE 5000
 ENV FLASK_APP=app.py
 
 # Define the command to run the Flask development server
-#CMD ["flask", "run", "--host=0.0.0.0"]
+CMD ["flask", "run", "--host=0.0.0.0"]
 #CMD ["gunicorn", "app:app", "-c", "./gunicorn.conf.py"]
-CMD [ "gunicorn", "-w", "1", "--bind", "0.0.0.0:5000", "app"]
+#CMD [ "gunicorn", "-w", "1", "--bind", "0.0.0.0:5000", "app"]
