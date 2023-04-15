@@ -13,7 +13,7 @@ services:
     build:
       context: ./converter
       dockerfile: Dockerfile
-    #command: gunicorn --bind 0.0.0.0:5000 app:app  
+    command: gunicorn --bind 0.0.0.0:5000 app:app  
     container_name: converter_api_app
     networks:
       - web_net 
