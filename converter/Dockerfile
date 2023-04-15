@@ -7,7 +7,8 @@ FROM python:3.8
 WORKDIR /converter
 
 # Copy requeriments to code
-COPY requirements.txt /code/
+COPY . .
+#requirements.txt /code/
 
 # Install the dependencies
 RUN pip install --upgrade pip
