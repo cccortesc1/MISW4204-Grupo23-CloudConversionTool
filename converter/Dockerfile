@@ -29,4 +29,5 @@ ENV FLASK_APP=app.py
 #CMD ["flask", "run", "--host=0.0.0.0"]
 #CMD ["gunicorn", "app:app", "-c", "app.py"]
 #CMD [ "gunicorn", "-w", "4", "--bind", "0.0.0.0:5000", "--chdir /home/ubuntu/project/MISW4204-Grupo23-CloudConversionTool app:wsgi"]
-CMD gunicorn --bind 0.0.0.0:5000 -w 3 run:app
+CMD python run.py 
+#gunicorn --bind 0.0.0.0:5000 -w 3 run:app
