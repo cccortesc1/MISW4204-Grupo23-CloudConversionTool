@@ -2,7 +2,7 @@
 FROM python:3.8
 
 # Set the working directory in the container to /app
-WORKDIR /converter
+WORKDIR /app
 
 # Copy the rest of the application code to the container
 COPY . .
