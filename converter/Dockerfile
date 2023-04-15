@@ -1,10 +1,10 @@
 # Use an official Python runtime as the base image
 FROM python:3.8
 
-RUN mkdir /code
+#RUN mkdir /code
 
 # Set the working directory in the container to /app
-WORKDIR /code
+WORKDIR /converter
 
 # Copy requeriments to code
 COPY requirements.txt /code/
@@ -13,7 +13,7 @@ COPY requirements.txt /code/
 RUN pip install --upgrade pip
 RUN pip install -r requirements.txt
 #RUN pip install gunicorn
-
+ 
 # Copy the rest of the application code to the container
 #COPY . /code/
 
