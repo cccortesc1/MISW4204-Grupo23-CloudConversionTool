@@ -1,24 +1,27 @@
 # Use an official Python runtime as the base image
-FROM python:3.8
+FROM python:3
+
+RUN mkdir /code
 
 # Set the working directory in the container to /app
-WORKDIR /
+WORKDIR /code
 
-# Copy the rest of the application code to the container
-COPY . .
+# Copy requeriments to code
+COPY requirements.txt /code/
 
 # Install the dependencies
 RUN pip install --upgrade pip
 RUN pip install -r requirements.txt
-RUN pip install gunicorn
+#RUN pip install gunicorn
+
+# Copy the rest of the application code to the container
+COPY . /code/
 
 # Set environment variables
-ENV FLASK_APP="default"
-ENV FLASK_DEBUG=1
-
+#ENV FLASK_APP="default"
+#ENV FLASK_DEBUG=1
 # Expose port 5000 for the Flask development server to listen on
-EXPOSE 5000
-
+#EXPOSE 5000
 ENV FLASK_APP=app.py
 
 
