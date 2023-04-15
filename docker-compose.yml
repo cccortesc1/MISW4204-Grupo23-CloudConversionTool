@@ -1,8 +1,17 @@
-version: '3'
+version: '3.8'
 services:
+  nginx:
+    container_name: cloud_conversion_nginx
+    image: nginx:alpine
+    ports:
+      - "80:80"
+    volumes:
+      - ./default.conf:/etc/nginx/conf.d/
+    depends_on:
+      - app
   app:
     build:
-      context: converter
+      context: ./converter
       dockerfile: Dockerfile
     container_name: converter_api_app
     networks:
@@ -24,15 +33,6 @@ services:
       - "5432:5432"
     volumes: 
       - ${PWD}/postgres-data:/var/lib/postgresql/data
-  nginx:
-    container_name: cloud_conversion_nginx
-    image: nginx:alpine
-    ports:
-      - "8000:80"
-    volumes:
-      - ./default.conf:/etc/nginx/conf.d/
-    depends_on:
-      - app
 networks:
   web_net:
       driver: bridge

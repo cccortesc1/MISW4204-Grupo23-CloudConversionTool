@@ -17,11 +17,11 @@ ENV FLASK_APP="default"
 ENV FLASK_DEBUG=1
 
 # Expose port 5000 for the Flask development server to listen on
-EXPOSE 8000
+EXPOSE 5000
 
 ENV FLASK_APP=app.py
 
 # Define the command to run the Flask development server
 #CMD ["flask", "run", "--host=0.0.0.0"]
 #CMD ["gunicorn", "app:app", "-c", "./gunicorn.conf.py"]
-CMD [ "gunicorn", "-w", "1", "--bind", "0.0.0.0:8000", "app"]
+CMD [ "gunicorn", "-w", "1", "--bind", "0.0.0.0:5000", "app"]
