@@ -25,4 +25,4 @@ ENV FLASK_APP=app.py
 # Define the command to run the Flask development server
 #CMD ["flask", "run", "--host=0.0.0.0"]
 #CMD ["gunicorn", "app:app", "-c", "app.py"]
-CMD [ "gunicorn", "-w", "4", "--bind", "0.0.0.0:5000", "app"]
+CMD [ "gunicorn", "-w", "4", "--bind", "0.0.0.0:5000", "wsgi:app"]
