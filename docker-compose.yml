@@ -4,12 +4,12 @@ services:
     build:
       context: converter
       dockerfile: Dockerfile
-    command: gunicorn --bind 0.0.0.0:8000 manage:app  
+    command: gunicorn --bind 0.0.0.0:5000 manage:app  
     container_name: converter_api_app
     networks:
       - web_net 
     ports:
-      - "8000:8000"
+      - "5000:5000"
     depends_on: 
       - db
   db: 
