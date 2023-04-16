@@ -1,8 +1,8 @@
 #from converter import create_app
 from flask_restful import Api
 from flask_jwt_extended import JWTManager
-from .view import UserListView, TaskListView, SignupView, LoginView, TaskView, FileView
-from .model import db, UserSchema, TaskSchema, User, Task
+from view import UserListView, TaskListView, SignupView, LoginView, TaskView, FileView
+from model import db, UserSchema, TaskSchema, User, Task
 from flask import Flask
 
 def create_app(config_name):
